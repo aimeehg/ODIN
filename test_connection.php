@@ -11,7 +11,7 @@ $result = mysqli_query($connection, $test_query);
 
 $tblCnt = 0;
 
-while($tbl = mysql_fetch_array($result)) {
+while($tbl = mysqli_fetch_array($result)) {
   $tblCnt++;
   echo $tbl[0]."<br />\n";
 }
