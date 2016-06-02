@@ -7,7 +7,7 @@ $mysqli = new mysqli($servidor, $usuario, $contra, $base);
 /* check connection */
 if (mysqli_connect_errno()) {
     printf("Connect failed: %s\n", mysqli_connect_error());
-    exit();
+   // exit();
 }
 // Select all the rows in the markers table
 $peticion = $mysqli->query("SELECT * FROM markers WHERE 1");
