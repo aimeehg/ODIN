@@ -7,13 +7,13 @@ mysqli_select_db($connect,$base) or die("Could not open the db '$base'");
 
 $test_query = "SHOW TABLES FROM $base";
 
-$result = mysql_query($test_query);
+$result = mysqli_query($connection, $test_query);
 
 $tblCnt = 0;
 
 while($tbl = mysql_fetch_array($result)) {
   $tblCnt++;
-  #echo $tbl[0]."<br />\n";
+  echo $tbl[0]."<br />\n";
 }
 if (!$tblCnt) {
   echo "There are no tables<br />\n";
