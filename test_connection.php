@@ -38,7 +38,9 @@ function connect()
         console.log(getAllItems());
 	}
 	catch(Exception $e){
+        console.log("hay un error", $e);
 		die(print_r($e));
+    
 	}
 	return $conn;
 }
