@@ -10,8 +10,8 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
 
-$sql = "INSERT INTO markers (lat, lng, type)
-VALUES ('".$lat."','".$long."', 'bache')";
+$sql = "INSERT INTO markers (lat, lng)
+VALUES ('".$lat."','".$long."')";
 
 if ($conn->query($sql) === TRUE) {
     echo "New record created successfully";

@@ -262,10 +262,10 @@ function initMap() {
         var markers = xml.documentElement.getElementsByTagName("marker");
         for (var i = 0; i < markers.length; i++) {
           var info = markers[i].getAttribute("info");
-          var type = markers[i].getAttribute("type");
+          //var type = markers[i].getAttribute("type");
           var id_b = markers[i].getAttribute("id");
-          if (type == "bache"){
-          var icon = customIcons[type] || {};
+            //var image = 'image/emergency.png';
+          var icon = 'image/pothole2.png';
           var point = new google.maps.LatLng(
               parseFloat(markers[i].getAttribute("lat")),
               parseFloat(markers[i].getAttribute("lng")));
@@ -273,12 +273,12 @@ function initMap() {
             map: map,
             position: point,
             id: id_b,
-            icon: icon.icon
+            icon: icon
           });
           boton = "<a href='#' class='eliminar-bache' onclick = 'DeleteMarker(" + marker.get("id") + ");'>Eliminar Bache</a>"
           var html = "<b>" + info+"<br />" +boton+"</b>";
           bindInfoWindow(marker, map, infoWindow, html);
-        }
+    
         }
       });
 
