@@ -1,3 +1,6 @@
+
+<?php
+/** 
 <?php
 # Fill our vars and run on cli
 # $ php -f db-connect-test.php
@@ -20,3 +23,52 @@ if (!$tblCnt) {
 } else {
   echo "There are $tblCnt tables<br />\n";
 }
+	*/
+	
+function connect()
+{
+	// DB connection info
+	$host = "us-cdbr-azure-southcentral-e.cloudapp.net";
+	$user = "b626e05c4e4c27";
+	$pwd = "d7af55f9";
+	$db = "odin_bd";
+	try{
+		$conn = new PDO( "mysql:host=$host;dbname=$db", $user, $pwd);
+		$conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+        console.log(getAllItems());
+	}
+	catch(Exception $e){
+		die(print_r($e));
+	}
+	return $conn;
+}
+
+function getAllItems()
+{
+	$conn = connect();
+	$sql = "SELECT * FROM markers";
+	$stmt = $conn->query($sql);
+	return $stmt->fetchAll(PDO::FETCH_NUM);
+}
+
+function addItem($info, $lat, $lng,)
+{
+	$conn = connect();
+	$sql = "INSERT INTO markers (info, lat, lng) VALUES (?, ?, ?)";
+	$stmt = $conn->prepare($sql);
+	$stmt->bindValue(1, $info);
+	$stmt->bindValue(2, $lat);
+	$stmt->bindValue(3, $lng);
+	$stmt->execute();
+}
+
+function deleteItem($item_id)
+{
+	$conn = connect();
+	$sql = "DELETE FROM markers WHERE id = ?";
+	$stmt = $conn->prepare($sql);
+	$stmt->bindValue(1, $item_id);
+	$stmt->execute();
+}
+
+?>
